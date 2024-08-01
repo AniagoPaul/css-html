@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+    <script src="/lession.js"></script>
+</head>
+<body>
+    <div>
+        <div>
+            <p> rock paper scissor</p>
+        </div>
+        <div> 
+            <button onclick="
+           
+            console.log(getRandomNum());
+           pickResult('rock');
+           ">rock</button>
+
+            <button onclick="
+            
+            console.log(getRandomNum());
+           pickResult('paper');
+           ">paper</button>
+
+            <button onclick= "
+            
+            console.log(getRandomNum());
+           pickResult('scissor');
+            ">scissor</button>
+
+            <button onclick="
+            reSet();
+            ">Reset</button>
+        </div>
+    </div>
+    <script>
+        const product = {
+            name:'sock',
+            price:1000
+
+        };
+        console.log(product);
+        product.expire =2025;
+        console.log(product);
+        product.produced =2023;
+        console.log(product);
+        /*functions in an object*/
+        const sum = {
+name:'shirt',
+pick1:{
+    name:'polo',
+    price:1000
+},
+pick2:{
+
+    name:'long-shirt',
+    price: 1200
+
+},
+sumAll:function sumPrice(para,para2){
+ let all = para + para2;
+ return all;
+},
+rate:{
+    stars:"8stars",
+    value:87
+}
+        };
+    console.log(sum.name);    
+    console.log(sum.pick1.name);    
+    console.log(sum.pick1.price);    
+    console.log(sum.pick2.name);    
+    console.log(sum.pick2.price);    
+    console.log(sum.sumAll(sum.pick1.price,sum.pick2.price));    
+    console.log(sum.rate.stars);    
+    console.log(thm);
+    </script>
+</body>
+</html>

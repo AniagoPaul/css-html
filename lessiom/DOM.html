@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <script src="./lession.js"></script>
+  </head>
+  <body>
+    <div>
+
+      <p>Youtube</p>
+
+      <input placeholder="Data amount" class="js-sub-input" />
+
+      <button
+        class="js-sub-button"
+        onclick="
+    subYoutube();
+     ">Subscribe
+      </button>
+
+      <p class="js-sub-para"></p>
+
+    </div>
+
+    <div>
+      <p class="game-para">Rock : Paper : Scissor</p>
+
+      <button
+        class="js-rock-but rock-but"
+        onclick="
+     pickResult('rock');
+    ">Rock
+      </button>
+
+      <button
+        class="js-paper-but paper-but"
+        onclick="
+    pickResult('paper');
+    ">Paper
+      </button>
+
+      <button
+        class="js-scissor-but scissor"
+        onclick="
+    pickResult('paper');
+    ">Scissor
+      </button>
+
+      <p class="js-score score"></p>
+      <p class="js-picks picks"></p>
+      <p class="js-outcome"></p>
+
+      <button
+        class="js-reset-but reset-but"
+        onclick="
+    reSet();
+    ">Reset
+      </button>
+
+    </div>
+    
+    <div>
+      <p>e-commence calculate</p>
+      <p>product</p>
+      <p>price< $50 : shipping fee $10</p>
+      <p>price >$50 : shipping fee free</p>
+
+      <input
+        placeholder="cost"
+        class="js-calinput"
+        onkeydown="
+             let keyevent = event.key;
+             if(keyevent === 'Enter');
+             calculate();
+          "/>
+
+      <button
+        class="js-calbut"
+        onclick="
+    calculate();
+    "></button>
+
+      <p class="js-callout"></p>
+      <p class="js-sum-output"></p>
+
+    </div>
+    <script>
+        
+        
+        document.querySelector(".js-calbut").innerHTML = "calculate";
+        
+        function calculate() {
+            const calInput = document.querySelector(".js-calinput");
+            let cost = Number(calInput.value);
+            
+            if (cost < 50) {
+                cost += 10;
+            } else if (cost > 50) {
+                cost += 0;
+            }
+            document.querySelector('.js-sum-output').innerHTML = `$${cost}`
+        console.log(cost);
+      }
+
+      function subYoutube() {
+        let selectSub = document.querySelector(".js-sub-button").innerHTML;
+
+        document.querySelector(".js-sub-button").innerHTML = "Subscribed";
+
+        document.querySelector(".js-sub-para").innerHTML = "PLEASE SUB";
+
+        if (selectSub === "Subscribed") {
+          const me = document.querySelector(".js-sub-input");
+
+          let valveQ = me.value;
+          document.querySelector(
+            ".js-sub-para"
+          ).innerHTML = `Thank you, you sub ${valveQ}MB`;
+
+          document.querySelector(".js-sub-button").innerHTML = "Subscribed";
+        }
+      }
+
+      function pickResult(pickChoice) {
+        let outPut = getRandomNum();
+        let thm = localStorage.getItem("score");
+        let score = JSON.parse(thm);
+        if (!score) {
+          score = {
+            win: 0,
+            loss: 0,
+            tie: 0,
+          };
+        }
+        let result = "";
+        if (pickChoice === "rock") {
+          if (outPut === "rock") {
+            result = "tie";
+          } else if (outPut === "paper") {
+            result = "you lose";
+          } else if (outPut === "scissor") {
+            result = "you win";
+          }
+        } else if (pickChoice === "paper") {
+          if (outPut === "paper") {
+            result = "tie";
+          } else if (outPut === "scissor") {
+            result = "you lose";
+          } else if (outPut === "rock") {
+            result = "you win";
+          }
+        } else if (pickChoice === "scissor") {
+          if (outPut === "scissor") {
+            result = "tie";
+          } else if (outPut === "paper") {
+            result = "you lose";
+          } else if (outPut === "rock") {
+            result = "you win";
+          }
+        }
+        if (result === "you win") {
+          score.win += 1;
+        } else if (result === "you lose") {
+          score.loss += 1;
+        } else if (result === "tie") {
+          score.tie += 1;
+        }
+        let springScore = JSON.stringify(score);
+        console.log(springScore);
+        localStorage.setItem("score", springScore);
+
+        
+        document.querySelector(".js-outcome").innerHTML = `win ${score.win} lose ${score.loss} tie ${score.tie}`;
+      
+
+        document.querySelector('.js-score').innerHTML = ` ${result}`;
+
+    document.querySelector('.js-picks').innerHTML = `You picked ${pickChoice}  Computer picked ${outPut}`;
+
+        return outPut;
+      }
+
+      function reSet() {
+        localStorage.removeItem("score");
+        document.querySelector(
+          ".js-outcome"
+        ).innerHTML = `win ${0} lose ${0} tie ${0}`;
+      }
+
+    </script>
+  </body>
+</html>

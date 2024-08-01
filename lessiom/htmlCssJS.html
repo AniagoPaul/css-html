@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <script src="./lession.js"></script>
+    <style>
+      body{
+        background-color: rgb(189, 186, 186);
+        color: black;
+        font-family: Arial;
+        font-weight: bold;
+        padding: 10px;
+        width: 400px;
+        
+      }
+      .game-para{
+        font-size: 26px;
+
+      }
+    .youtube-icon{
+      height: 25px;
+    }
+     .emoji-icon{
+      height: 80px;
+      
+     }
+     .icon-but{
+      margin-right: 5px;
+      height: 100px;
+      border: 2px solid black;
+      border-radius: 50px;
+     }
+     .sub-input{
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+     }
+     .sub-input:focus{
+      font: 10px;
+     }
+     .sub-input::placeholder{
+      font-size: 14px;
+      color: rgb(21, 49, 46);
+     }
+     .sub-but{
+      background-color: black;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      font-size:14px;
+      border-radius: 36px;
+    } 
+    .all-sub{
+     color: black;
+     background-color: rgb(233, 231, 231);
+    }
+.icon-move{
+  height: 60px;
+}
+.score{
+  font-size: 20px;
+  margin-top: 40px;
+}
+    </style>
+  </head>
+  <body>
+    <div>
+
+      <p><img src="/icon/youtube-logo.svg" class="youtube-icon"></p>
+
+      <input placeholder="Data amount" class="js-sub-input sub-input"  type="text"/>
+
+      <button
+        class="js-sub-button sub-but" 
+        id="js-but"
+        onclick="
+    subYoutube();
+     ">Subscribe
+      </button>
+
+      <p class="js-sub-para"></p>
+
+    </div>
+
+    <div>
+      <p class="game-para">Rock : Paper : Scissor</p>
+
+      <button
+        class="js-rock-but icon-but"
+        onclick="
+     pickResult('rock');
+    "><img src="/icon/rock-emoji.png" class="emoji-icon">
+      </button>
+
+      <button
+        class="js-paper-but icon-but"
+        onclick="
+    pickResult('paper');
+    "><img class="emoji-icon" src="/icon/paper-emoji.png">
+      </button>
+
+      <button
+        class="js-scissor-but scissor icon-but"
+        onclick="
+    pickResult('paper');
+    "><img src="/icon/scissor-emoji.png" class="emoji-icon">
+      </button>
+
+      <p class="js-score score"></p>
+      <p class="js-picks picks">
+        you <img src="/icon/rock-emoji.png" class="icon-move"> computer <img src="/icon/paper-emoji.png" class="icon-move">
+      </p>
+      <p class="js-outcome score"></p>
+
+      <button
+        class="js-reset-but sub-but"
+        onclick="
+    reSet();
+    " >Reset
+      </button>
+
+    </div>
+    
+    <div>
+      <p>e-commence calculate</p>
+      <p>product</p>
+      <p>price <$50 : shipping fee $10</p>
+      <p>price >$50 : shipping fee free</p>
+
+      <input
+        placeholder="cost"
+        class="js-calinput sub-input"
+        onkeydown="
+             let keyevent = event.key;
+             if(keyevent === 'Enter');
+             calculate();
+          "/>
+
+      <button
+        class="js-calbut sub-but" id="js-cal-but"
+        onclick="
+    calculate();
+    document.getElementById('js-cal-but').classList.remove('all-but');
+    "></button>
+
+<p class="js-callout"></p>
+<p class="js-sum-output"></p>
+
+</div>
+<script>
+  
+  
+  document.querySelector(".js-calbut").innerHTML = 'calculate';
+  
+
+       
+  
+  function calculate() {
+    const calInput = document.querySelector(".js-calinput");
+    let cost = Number(calInput.value);
+    
+    if (cost < 50) {
+      cost += 10;
+    } else if (cost > 50) {
+      cost += 0;
+    }
+    document.querySelector('.js-sum-output').innerHTML = `$${cost}`
+    console.log(cost);
+    let calculateBut = document.getElementById('js-cal-but')
+    calculateBut.classList.add('all-sub');
+  }
+  document.querySelector(".js-sub-para").innerHTML = "PLEASE SUB";
+  
+  function subYoutube() {
+        let selectSub = document.getElementById('js-but')
+        const me = document.querySelector(".js-sub-input");
+        let valveQ = me.value;
+        if (selectSub.innerText === "Subscribe") {
+          document.querySelector(".js-sub-button").innerHTML = 'Subscribed';
+          document.querySelector(
+    ".js-sub-para"
+  ).innerHTML = `Thank you, you sub ${valveQ}MB`;
+   let me =document.getElementById('js-but');
+  me.classList.add('all-sub');
+console.log(me);
+}else {
+  selectSub.innerText = "Subcribe"
+  me.classList.remove('all-sub')
+}
+console.log(selectSub);
+}
+
+      function pickResult(pickChoice) {
+        let outPut = getRandomNum();
+        let thm = localStorage.getItem("score");
+        let score = JSON.parse(thm);
+        if (!score) {
+          score = {
+            win: 0,
+            loss: 0,
+            tie: 0,
+          };
+        }
+        let result = "";
+        if (pickChoice === "rock") {
+          if (outPut === "rock") {
+            result = "tie";
+          } else if (outPut === "paper") {
+            result = "you lose";
+          } else if (outPut === "scissor") {
+            result = "you win";
+          }
+        } else if (pickChoice === "paper") {
+          if (outPut === "paper") {
+            result = "tie";
+          } else if (outPut === "scissor") {
+            result = "you lose";
+          } else if (outPut === "rock") {
+            result = "you win";
+          }
+        } else if (pickChoice === "scissor") {
+          if (outPut === "scissor") {
+            result = "tie";
+          } else if (outPut === "paper") {
+            result = "you lose";
+          } else if (outPut === "rock") {
+            result = "you win";
+          }
+        }
+        if (result === "you win") {
+          score.win += 1;
+        } else if (result === "you lose") {
+          score.loss += 1;
+        } else if (result === "tie") {
+          score.tie += 1;
+        }
+        let springScore = JSON.stringify(score);
+        console.log(springScore);
+        localStorage.setItem("score", springScore);
+
+        
+        document.querySelector(".js-outcome").innerHTML = `win ${score.win} lose ${score.loss} tie ${score.tie}`;
+      
+
+        document.querySelector('.js-score').innerHTML = ` ${result}`;
+
+    document.querySelector('.js-picks').innerHTML = `you <img src="/icon/${pickChoice}-emoji.png" class="icon-move"> computer <img src="/icon/${outPut}-emoji.png" class="icon-move"> `;
+
+        return outPut;
+      }
+
+      function reSet() {
+        localStorage.removeItem("score");
+        document.querySelector(
+          ".js-outcome"
+        ).innerHTML = `win ${0} lose ${0} tie ${0}`;
+      }
+
+    </script>
+  </body>
+</html>

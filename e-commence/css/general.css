@@ -1,0 +1,149 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+cursor: pointer;
+border-bottom: 1px solid rgb(205, 205, 205);
+background-color: white;
+z-index: 100;
+}
+.hamburg{
+    height: 27px;
+}
+.youtube-icon-div{
+    display: flex;
+    vertical-align: top;
+    justify-content: center;
+    align-content: center;
+    padding: 10px 4px;
+}
+.youtube-logo{
+    height: 22px;
+    padding-left: 24px;
+}
+.search-div{
+    
+    display: flex;
+    margin-left: 50px;
+    margin-right: 40px;
+    flex: 1;
+    max-width: 570px;
+    padding: 2px 2px;
+    
+}
+.search{
+    height: 38px;
+    border-width: 1px;
+    border-radius: 2px;
+    border-color: rgba(0, 0, 0, 0.397);
+    box-shadow: inset 1px 1px rgba(0, 0, 0, 0.144);
+    flex: 1;
+    width: 0;
+}
+.search::placeholder{
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 9px;
+}
+.search-but{
+    vertical-align: top;
+    height: 41px;
+    width: 60px;
+    margin-left: -1px;
+}
+.search-icon{
+    height: 25px;
+    margin-top: 4px;
+}
+.voice-but{
+margin-left: 10px;
+border-radius: 20px;
+border: 0;
+height: 40px;
+width: 40px;
+}
+.voice-search{
+    height: 25px;
+    padding-top: 6px;
+}
+.upload{
+    height: 25px;
+
+}
+.channel-1-div{
+    padding-top: 8px;
+    display: flex;
+    flex-shrink: 0;
+
+    
+    
+}.app{
+    height: 25px;
+    padding-left: 24px;
+}.notifications{
+    height: 28px;
+    padding-left: 30px;
+}.channel-1{
+    height: 35px;
+    padding-left: 20px;
+    border: 0;
+    border-radius: 17px;
+    object-fit: cover;
+    vertical-align: top;
+    padding-right: 8px;
+
+}
+.side-bar{
+    margin-top: 15px;
+    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2px;
+    background-color: white;
+
+} .sidebar{
+    margin-bottom: 2px;
+    height: 54px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+}.sidebar:hover{
+    background-color: rgb(218, 216, 216);
+}
+.tools{
+    font-size: 10px;
+    font: 800;
+}.tooltip{
+    font-size: 12px;
+    font: 800;
+    color: white;
+    background-color: black;
+    margin-bottom: 6px;
+}
+.tools4{
+    font-size: 10px;
+    font: 800;
+
+}
+.side-image{
+    height: 30px;
+    object-fit: 100%;
+}
+.page{
+   margin-left: 60px;
+   display: grid;
+   grid-template-columns:  1fr 1fr 1fr;
+   row-gap: 35px;  
+   column-gap: 15px;
+margin-top: 10px;
+}
+.thumbnail-1{
+    width: 100%;
+    object-fit: cover;
+    object-position: 100%;
+
+
+}
